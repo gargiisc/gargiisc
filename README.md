@@ -20,7 +20,7 @@
 <a href="https://www.hackerrank.com/@gargisc9127" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/hackerrank.svg" alt="@gargisc9127" height="30" width="40" /></a>
 <a href="https://www.codechef.com/users/@gargiisc" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.1.0/icons/codechef.svg" alt="@gargiisc" height="30" width="40" /></a>
 </p>
-
+<!---
 
 ## 💻 Tech Stack:
 ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white) 
@@ -46,6 +46,7 @@
 ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white) 
 ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white) 
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
+--->
 ## 📊 GitHub Stats:
 ![](https://github-readme-stats.vercel.app/api?username=gargiisc&theme=dark&hide_border=false&include_all_commits=false&count_private=false) 
 ![](https://github-readme-streak-stats.herokuapp.com/?user=gargiisc&theme=dark&hide_border=false)<br/>
