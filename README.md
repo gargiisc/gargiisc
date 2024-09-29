@@ -1,11 +1,23 @@
-<h1 align="center">Hi 👋, I'm gargi</h1>
+<h1 align="center">Hi, I'm gargi</h1>
 <h3 align="center"> </h3>
 
 <!--<p align="left"> <img src="https://komarev.com/ghpvc/?username=gargiisc&label=Profile%20views&color=0e75b6&style=flat" alt="gargiisc" /> </p>
 
 <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=gargiisc" alt="gargiisc" /></a> </p>  -->
 
-- 📫 reach me @ **gargisc9127@gmail.com**
+```javascript
+const about = {
+    name: 'gargi chaudhari',
+    experience: {
+        edu: 'Usha Mittal Institute of Technology'
+    },
+    links: {
+        github: 'https://github.com/gargiisc',
+        linkedin: 'https://www.linkedin.com/in/gargi-sc'
+    },
+    quote: 'just keep swimming - dory'
+}
+```
 
 
 <!-- BLOG-POST-LIST:START -->
