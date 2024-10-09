@@ -5,18 +5,18 @@
 
 <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=gargiisc" alt="gargiisc" /></a> </p>  -->
 
-```javascript
-const about = {
-    name: 'gargi chaudhari',
-    experience: {
-        edu: 'Usha Mittal Institute of Technology'
-        part of: 'GDG on Campus UMIT || Technical Lead'
-    },
-    links: {
-        github: 'https://github.com/gargiisc',
-        linkedin: 'https://www.linkedin.com/in/gargi-sc'
-    },
-    quote: 'just keep swimming - dory'
+```json
+{
+  "name": "gargi chaudhari",
+  "experience": {
+    "edu": "Usha Mittal Institute of Technology"
+    "part of": "GDG on Campus - Technical Lead"
+  },
+  "links": {
+    "github": "https://github.com/gargiisc",
+    "linkedin": "https://www.linkedin.com/in/gargi-sc"
+  },
+  "quote": "just keep swimming - dory"
 }
 ```
 
