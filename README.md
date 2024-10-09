@@ -10,6 +10,7 @@ const about = {
     name: 'gargi chaudhari',
     experience: {
         edu: 'Usha Mittal Institute of Technology'
+        part of: GDG on Campus UMIT || Technical Lead
     },
     links: {
         github: 'https://github.com/gargiisc',
