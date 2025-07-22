@@ -1,0 +1,326 @@
+\documentclass[10pt, a4]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=2 cm, % seperation between body and page edge from the top
+    bottom=2 cm, % seperation between body and page edge from the bottom
+    left=2 cm, % seperation between body and page edge from the left
+    right=2 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 79, 144} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage[sfdefault]{sans}  % For Roboto font (optional)
+%\renewcommand{\familydefault}{\sfdefault} % For default sans-serif
+\usepackage{xspace}  % For smart spacing
+
+% Custom pipe command with spacing
+\newcommand{\pipe}{\,{\textbar}\,}
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Gargi C},
+    pdfauthor={Gargi C},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    % \usepackage[T1]{fontenc} % this breaks sb2nov
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+% Some settings:
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0cm} % set column seperation
+\makeatletter
+\let\ps@customFooterStyle\ps@plain % Copy the plain style to customFooterStyle
+
+\makeatother
+\pagestyle{customFooterStyle}
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\circ$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0.4 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0.2 cm + 0.00001 cm
+    }{
+        0.2 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0.2 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{ }\hspace{\widthof{ }}
+    }}}%
+  }%
+}%
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+% new command for external links:
+\renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
+
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{}
+
+    \placelastupdatedtext
+    \begin{header}
+        \textbf{\fontsize{24 pt}{24 pt}\selectfont Gargi Chaudhari}
+
+        \vspace{0.3 cm}
+
+        \normalsize
+        
+        \mbox{\hrefWithoutArrow{mailto:gargisc9127@gmail.com}{\color{black}{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}gargisc9127@gmail.com}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{tel:+91-8080522597}{\color{black}{\footnotesize\faPhone*}\hspace*{0.13cm}8080522597}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://gargii-sc.vercel.app/}{\color{black}{\footnotesize\faLink}\hspace*{0.13cm}gargii.sc}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://linkedin.com/in/gargi-sc}{\color{black}{\footnotesize\faLinkedinIn}\hspace*{0.13cm}gargi-sc}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://github.com/gargiisc}{\color{black}{\footnotesize\faGithub}\hspace*{0.13cm}gargiisc}}%
+    \end{header}
+
+    \vspace{0.3 cm - 0.3 cm}
+
+    % \section{About}
+    %     \begin{onecolentry}
+    %         is a LaTeX-based CV/resume version-control and maintenance app. It allows you to create a high-quality CV or resume as a PDF file from a YAML file, with \textbf{Markdown syntax support} and \textbf{complete control over the LaTeX code}.
+    %     \end{onecolentry}
+
+    %     \vspace{0.2 cm}
+
+    %     \begin{onecolentry}
+    %         The boilerplate content was inspired by \href{https://github.com/dnl-blkv/mcdowell-cv}{Gayle McDowell}.
+    %     \end{onecolentry}
+
+    \section{Education}
+        \begin{twocolentry}{
+        \textit{2026}}
+            \textbf{Usha Mittal Institute of Technology}
+
+            \textit{BTech in Computer Engineering}
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item GPA: 8.57/10 
+                \item \textbf{Coursework:} Data Structure \& Algorithm, Operating System, Database Management, Object Oriented Programming, Machine Learning, Computer Architecture \& Organization, Software Engineering
+            \end{highlights}
+        \end{onecolentry}
+  
+    
+    \section{Projects}
+
+    \begin{twocolentry}{\textit{Jan '25 – Apr '25}}
+        \textbf{\href{https://github.com/gargiisc/phish-detect-v4}{Phishing Detector System} \pipe \textbf{Course Project} \pipe Prof. Shraddha Rokade}
+    \end{twocolentry}
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item \textbf{Formulated} a real-time phishing detection system using \textbf{Flask}, applying \textbf{machine learning} models trained on \textbf{lexical, WHOIS, and HTML features} to identify malicious URLs with high precision.
+            \item \textbf{Developed} a clean, responsive interface with \textbf{HTML, CSS, and JavaScript}, integrating the backend model pipeline for seamless user interaction and prediction display.
+            \item \textbf{Built} a lightweight \textbf{Chrome extension} to deliver real-time phishing alerts for both \textbf{webpages and emails}, enhancing system usability and user safety during browsing and communication.
+            \item \textbf{Tools Used:} Python, Flask, Firebase
+        \end{highlights}
+    \end{onecolentry}
+
+    \vspace{0.2 cm}
+    \begin{twocolentry}{\textit{Jun '25}}
+        \textbf{\href{https://github.com/gargiisc/syntax-type}{Syntax Type} \pipe \textbf{Self Project}}
+    \end{twocolentry}
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item \textbf{Built} a responsive web-based code editor with real-time syntax highlighting using \textbf{Next.js} and \textbf{React}.
+            \item \textbf{Enabled} support for \textbf{multiple programming languages} with fast \textbf{client-side updates}.
+
+            \item \textbf{Tools Used:} Next.js, React
+        \end{highlights}
+    \end{onecolentry}
+
+    \vspace{0.2 cm}
+    \begin{twocolentry}{\textit{Oct '23}}
+        \textbf{\href{https://github.com/gargiisc/Aahar-Final}{Aahar} \pipe \textbf{Self Project}}
+    \end{twocolentry}
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item \textbf{Developed} a \textbf{health platform} for \textbf{BMI} and \textbf{calorie tracking}, \textbf{voice journaling}, and \textbf{AI-powered health suggestions}.
+\item \textbf{Integrated} a \textbf{Voice Journal} for daily logs and a \textbf{Health Bot} for personalized advice.
+
+            \item \textbf{Tools Used:} React, Firebase
+        \end{highlights}
+    \end{onecolentry}
+
+    \section{Technologies}
+    
+        \begin{onecolentry}
+            \textbf{Languages:} C, C++, JavaScript, HTML5, CSS3, Python, Java (Familiar)
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+        \begin{onecolentry}
+            \textbf{Frameworks:} React.js, Flask, Firebase
+        \end{onecolentry}
+        
+        \vspace{0.2 cm}
+        \begin{onecolentry}
+            \textbf{Technologies:} Git/Github, Figma, Postman, Chrome DevTools, Jupyter Notebook, Linux
+        \end{onecolentry}
+
+                   \section{Positions of Responsibility}
+
+        \begin{twocolentry}{\textit{Sep ‘24 – Jun ‘25}}
+            \textbf{{}{Google Developer Group on Campus UMIT} \pipe Technical Lead}
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Designed two \textbf{\href{https://gdsc-tech-hunt.netlify.app/}{Tech Hunt}} web games with hidden clues, logic puzzles, and secure web navigation for upcoming coders during orientation.
+                \item Led \textbf{ByteBlitz}, a 7-day DSA challenge and mini-hackathon that improved coding skills of 100+ students.
+                \item Co-hosted \textbf{\href{https://hackx.live/}{HackX 3.0}} with GDG \& IEEE – designed the official hackathon website., managed 50+ teams and mentored 5 teams.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+        \begin{twocolentry}{\textit{Aug ‘23 – May ‘24}}
+            \textbf{Google Developer Student Club \pipe Technical Workforce Member}
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item \textbf{Contributed} \textbf{Tech Titan}, an academic and technical support initiative under GDSC that benefited \textbf{300+ students}, offering help with coding, DSA, and development through peer mentorship and collaborative learning.
+
+                \item \textbf{Curated} technical quizzes, \textbf{maintained GitHub repositories}, and \textbf{co-authored documentation} for this initiative.
+
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+        \begin{twocolentry}{\textit{Aug ‘23 – May ‘24}}
+            \textbf{Writer’s Club UMIT \pipe Graphics Team}
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Designed graphics and managed social media content for events involving 70+ participants.
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Achievements}
+        \begin{onecolentry}
+            \begin{highlightsforbulletentries}
+                \item \textbf{Global Rank 11} in \textbf{CodeChef DevWeekend02} among 350+ global participants.
+                \item Finalist at \textbf{SpaceSprint 2023} hackathon.
+                \item Selected for \textbf{Smart India Hackathon 2024} after internal round clearance.
+                \item \textbf{Shortlisted} for \textbf{Cisco Boost 5.0} Cisco’s \textbf{flagship cybersecurity upskilling program} conducted nationwide.
+            \end{highlightsforbulletentries}
+        \end{onecolentry}
+
+    \section{Extra-Curricular Activities}
+        \begin{onecolentry}
+            \begin{highlightsforbulletentries}
+                \item Volunteered at \textbf{ICCC 2025 (International Conference on Climate Change)} – coordinated logistics during research sessions and paper presentations.
+                \item Trained vocalist in \textbf{Hindustani Classical Music}; cleared \textbf{Madhyama Purna (Level 5)} from Akhil Bharatiya Gandharva Mahavidyalaya \textbf{ABGMV}.  
+            \end{highlightsforbulletentries}
+        \end{onecolentry}
+
+\end{document}
